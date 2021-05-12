@@ -100,17 +100,17 @@ definitions:
   EventsResponse:
       type: array
       items:
-        $ref: "#/definitions/Events"
+        $ref: "#/definitions/events"
   GameResponse:
       type: array
       items:
-        $ref: "#/definitions/Game"
+        $ref: "#/definitions/games"
   ShopResponse:
       type: array
       items:
-        $ref: "#/definitions/Shop"
+        $ref: "#/definitions/shop"
   
-  Events:
+  events:
     required:
       - name
     properties:
@@ -125,7 +125,7 @@ definitions:
       price:
         type: string
         
-  Game:
+  games:
     required:
       - team1
       - team2
@@ -140,7 +140,7 @@ definitions:
         type: string
       
       
-  Shop:
+  shop:
     required:
       - name
     properties:
