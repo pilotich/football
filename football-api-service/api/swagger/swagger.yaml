@@ -116,17 +116,13 @@ definitions:
     properties:
       name:
         type: string
-      group:
-        type: string
       image:
         type: string
       date:
         type: string       
       location:
         type: string
-      duration:
-        type: string
-      score:
+      price:
         type: string
         
   Game:
@@ -149,6 +145,8 @@ definitions:
       - name
     properties:
       name:
+        type: string
+      date:
         type: string
       image: 
         type: string

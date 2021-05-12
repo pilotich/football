@@ -27,6 +27,18 @@ var faker = require('faker');
 module.exports = {
     game: getGame,
 };
+
+let teams = [
+    "Dynamo Minsk",
+    "Dynamo Brest",
+    "Shaktar",
+    "BATE",
+    "Minsk",
+    "Ruch",
+    "Neman",
+    "Grodno",
+    "Isloch",
+];
 /*
   Functions in a127 controllers used for operations should take two parameters:
 
@@ -34,5 +46,41 @@ module.exports = {
   Param 2: a handle to the response object
  */
 function getGame(req, res){
+    function todayDate() {
+        var today = new Date();
+        var dd = today.getDate();
 
+        var mm = today.getMonth() + 1;
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        var d = new Date(today),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
+    var date = req.swagger.params.date.value || todayDate();
+
+    // this sends back a JSON response which is a single string
+    res.json([
+        {
+            team1: "" + teams[faker.random.number({min: 0, max: 10})] + " - ",
+            team2: "" + teams[faker.random.number({min: 0, max: 10})] + "  ",
+            date: "" +  date,
+            location: "Dynamo Stadium, Minsk",
+    },
+    ]);
 }

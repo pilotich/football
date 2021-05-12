@@ -33,6 +33,26 @@ module.exports = {
   Param 1: a handle to the request object
   Param 2: a handle to the response object
  */
-function getProducts(req, res){
+function getProducts(req, res) {
+    const dateRightNow = new Date();
+    let fullDateText = `${dateRightNow.getFullYear()}-${
+        dateRightNow.getMonth() + 1 >= 10
+            ? dateRightNow.getMonth() + 1
+            : "0" + (dateRightNow.getMonth() + 1)
+    }-${
+        dateRightNow.getDate() >= 10
+            ? dateRightNow.getDate()
+            : "0" + dateRightNow.getDate()
+    }`;
 
+    var date = req.swagger.params.date.value || fullDateText;
+
+    res.json([
+        {
+          date: date,
+          name: faker.commerce.productName(),
+          image: faker.image.imageUrl(),
+          price: faker.random.number(),
+        },
+    ]);
 }

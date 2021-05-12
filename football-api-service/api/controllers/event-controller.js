@@ -35,10 +35,42 @@ module.exports = {
   Param 2: a handle to the response object
  */
 function getEvents(req, res) {
+  function todayDate() {
+    var today = new Date();
+    var dd = today.getDate();
+
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+      dd = '0' + dd;
+    }
+
+    if (mm < 10) {
+      mm = '0' + mm;
+    }
+    var d = new Date(today),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2)
+      month = '0' + month;
+    if (day.length < 2)
+      day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
   // variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
   var name = req.swagger.params.name.value || 'stranger';
-  var hello = util.format('Hello, %s!', name);
+
 
   // this sends back a JSON response which is a single string
-  res.json(hello);
+  res.json([{
+    name: faker.name.firstName(),
+    image: faker.image.Url(),
+    date: date,
+    location: "Minsk, Prime Hall" ,
+    price: faker.random.number(),
+  },
+  ]);
 }
