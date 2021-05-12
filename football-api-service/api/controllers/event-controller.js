@@ -61,16 +61,16 @@ function getEvents(req, res) {
     return [year, month, day].join('-');
   }
   // variables defined in the Swagger document can be referenced using req.swagger.params.{parameter_name}
-  var name = req.swagger.params.name.value || 'stranger';
+  var name = req.swagger.params.name.value || todayDate();
 
 
   // this sends back a JSON response which is a single string
   res.json([{
-    name: faker.name.firstName(),
-    image: faker.image.Url(),
-    date: date,
-    location: "Minsk, Prime Hall" ,
-    price: faker.random.number(),
+    "name": faker.name.firstName(),
+    "image": "fest.jpg",
+    "date": date,
+    "location": "Minsk, Prime Hall" ,
+    "price": faker.random.number(),
   },
   ]);
 }

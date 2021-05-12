@@ -50,9 +50,9 @@ function getProducts(req, res) {
     res.json([
         {
           date: date,
-          name: faker.commerce.productName(),
+          name: "" + faker.commerce.productName(),
           image: faker.image.imageUrl(),
-          price: faker.random.number(),
+          price: "" + faker.random.number(),
         },
     ]);
 }
