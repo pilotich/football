@@ -77,8 +77,8 @@ function getGame(req, res){
     // this sends back a JSON response which is a single string
     res.json([
         {
-            team1: "" + teams[faker.random.number({min: 0, max: 10})] + " - ",
-            team2: "" + teams[faker.random.number({min: 0, max: 10})] + "  ",
+            team1: "" + teams[faker.random.number({min: 0, max: 8})] + " - ",
+            team2: "" + teams[faker.random.number({min: 0, max: 8})] + "  ",
             date: "" +  date,
             location: "Dynamo Stadium, Minsk",
     },
