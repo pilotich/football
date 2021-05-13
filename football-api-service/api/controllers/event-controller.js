@@ -66,11 +66,11 @@ function getEvents(req, res) {
 
   // this sends back a JSON response which is a single string
   res.json([{
-    "name": faker.name.firstName(),
-    "image": faker.image.imageUrl(),
-    "date": date,
-    "location": "Minsk, Prime Hall" ,
-    "price": faker.random.number(),
+    name: faker.name.firstName(),
+    image: faker.image.imageUrl(),
+    date: date,
+    location: "Minsk, Prime Hall" ,
+    price: faker.random.number(),
   },
   ]);
 }
